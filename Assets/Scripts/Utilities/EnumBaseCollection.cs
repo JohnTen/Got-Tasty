@@ -15,7 +15,7 @@ namespace UnityUtility
 	}
 
 	/// <summary>
-	/// 基于枚举类型的集合类
+	/// Collectaion based on enum values
 	/// </summary>
 	/// <typeparam name="E"></typeparam>
 	/// <typeparam name="V"></typeparam>
@@ -37,7 +37,7 @@ namespace UnityUtility
 		public EnumBasedCollection()
 		{
 			if (!typeof(E).IsEnum)
-				throw new ArgumentException(typeof(E).Name + " 不是枚举类型！");
+				throw new ArgumentException(typeof(E).Name + " is not a Enum type!");
 			EnumType = typeof(E);
 			var eValues = Enum.GetValues(EnumType);
 			int enumNum = eValues.Length;
@@ -67,7 +67,7 @@ namespace UnityUtility
 		}
 
 		/// <summary>
-		/// 清空内容
+		/// Clear all contains
 		/// </summary>
 		public void Clear()
 		{
@@ -77,9 +77,9 @@ namespace UnityUtility
 		}
 
 		/// <summary>
-		/// 把所有值恢复到默认值
+		/// Reset all the values to default values
 		/// </summary>
-		public void SetDefault()
+		public void Reset()
 		{
 			var eValues = Enum.GetValues(EnumType);
 
@@ -94,7 +94,7 @@ namespace UnityUtility
 		}
 
 		/// <summary>
-		/// 如果没有初始化过该对象，初始化它
+		/// Initialise the object if haven't initialise it before.
 		/// </summary>
 		public override void Init()
 		{

@@ -55,7 +55,7 @@ namespace UnityUtility.Editor
 		{
 			if (keys == null || values == null)
 			{
-				EditorGUI.HelpBox(position, property.type.ToString() + " 不是一个有效的 EnumBaseCollection.", MessageType.Error);
+				EditorGUI.HelpBox(position, property.type.ToString() + " is not a valid EnumBaseCollection.", MessageType.Error);
 				return;
 			}
 
@@ -83,7 +83,6 @@ namespace UnityUtility.Editor
 				int i;
 				for (i = 0; i < length; i++)
 				{
-					//var i_key = keys.GetArrayElementAtIndex(i);
 					var i_value = values.GetArrayElementAtIndex(i);
 					EditorGUI.LabelField(new Rect(k_left, top, k_width,
 						keyHeights[i]), enumNames[i]);
