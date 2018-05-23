@@ -7,5 +7,8 @@ public class PatMelon : MonoBehaviour
 {
     AudioSource patSound;
 
+    public void Pat(Watermelon melon, float force)
+    {
 
+    }
 }
