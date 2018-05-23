@@ -9,6 +9,6 @@ public class PatMelon : MonoBehaviour
 
     public void Pat(Watermelon melon, float force)
     {
-
+        
     }
 }

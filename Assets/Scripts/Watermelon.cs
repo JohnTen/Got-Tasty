@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Watermelon : MonoBehaviour
+public class Watermelon : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField]
     float maturity;
@@ -30,5 +31,15 @@ public class Watermelon : MonoBehaviour
     public void BrokeDown()
     {
         
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
     }
 }
