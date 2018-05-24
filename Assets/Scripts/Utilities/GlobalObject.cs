@@ -10,12 +10,12 @@ using System.Runtime.Serialization;
 namespace UnityUtility
 {
 	/// <summary>
-	/// 在整个游戏过程中都会保持存活的Object，可在上面添加Component
+	/// An GameObject that will live through the whole game process
 	/// </summary>
 	public class GlobalObject : MonoBehaviour
 	{
 		/// <summary>
-		/// 用于快速索引位于 GlobalObject 上的 Component
+        /// For quick search components on thie object
 		/// </summary>
 		private Dictionary<Type, Component> _components = new Dictionary<Type, Component>();
 
@@ -27,7 +27,7 @@ namespace UnityUtility
 		}
 
 		/// <summary>
-		/// GlobalObject 的实例
+		/// Intacnce of GlobalObject
 		/// </summary>
 		public static GlobalObject Instance
 		{
@@ -44,24 +44,28 @@ namespace UnityUtility
 			}
 		}
 
-		private static GameObject _hidenObject;
-		public static GameObject HidenObject
+		private static GameObject _deactivedObject;
+
+        /// <summary>
+        /// An object that will stay deactived through out the whole game process
+        /// </summary>
+		public static GameObject DeactivedObject
 		{
 			get
 			{
-				if (_hidenObject == null)
+				if (_deactivedObject == null)
 				{
-					_hidenObject = new GameObject("HidenObject");
-					_hidenObject.transform.SetParent(Instance.transform);
-					_hidenObject.SetActive(false);
+					_deactivedObject = new GameObject("HidenObject");
+					_deactivedObject.transform.SetParent(Instance.transform);
+					_deactivedObject.SetActive(false);
 				}
 
-				return _hidenObject;
+				return _deactivedObject;
 			}
 		}
 
 		/// <summary>
-		/// 向 GlobalObject 上添加一个Component
+		/// Add a component on GlobalObject
 		/// </summary>
 		/// <typeparam name="T"></typeparam>
 		public static T AddComponent<T>() where T : Component
@@ -80,11 +84,11 @@ namespace UnityUtility
 			return (T)comp;
 		}
 
-		/// <summary>
-		/// 从 GlobalObject 上获取一个 Component
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		public new static T GetComponent<T>() where T : Component
+        /// <summary>
+        /// Get a component from GlobalObject
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        public new static T GetComponent<T>() where T : Component
 		{
 			var type = typeof(T);
 			Component comp;
@@ -100,11 +104,11 @@ namespace UnityUtility
 			return (T)comp;
 		}
 
-		/// <summary>
-		/// 从 GlobalObject 上获取一个 Component, 如果不存在，则添加一个
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		public static T GetOrAddComponent<T>() where T : Component
+        /// <summary>
+        /// Get a component from GlobalObject, create one if that componenet isn't existed
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        public static T GetOrAddComponent<T>() where T : Component
 		{
 			var obj = GetComponent<T>();
 			if (obj == null)
@@ -112,12 +116,12 @@ namespace UnityUtility
 			return obj;
 		}
 
-		/// <summary>
-		/// 从 GlobalObject 上移除一个 Component, 如果Component不存在，返回false
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <returns></returns>
-		public static bool RemoveComponent<T>() where T : Component
+        /// <summary>
+        /// Remove a component from GlobalObject, return false if that componenet isn't existed
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static bool RemoveComponent<T>() where T : Component
 		{
 			var type = typeof(T);
 			Component comp;

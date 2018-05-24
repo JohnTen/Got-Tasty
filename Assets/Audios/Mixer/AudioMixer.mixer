@@ -25,7 +25,7 @@ AudioMixerController:
     - 6e2296805c3c0624da7eafa962e1fbb9
     name: View
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 245980653381784900}
+  m_TargetSnapshot: {fileID: 245742202745987254}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -107,33 +107,10 @@ AudioMixerGroupController:
   m_Pitch: e141d5c5d33c1134abfc672f08ae5408
   m_Effects:
   - {fileID: 244596795684608322}
-  - {fileID: 244788412637488120}
-  - {fileID: 244059112332261204}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
---- !u!244 &244059112332261204
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_EffectID: 2ab3f94811a876444a3efe1b2bfa78cb
-  m_EffectName: Compressor
-  m_MixLevel: 2c563842d01f90d4d9fc08a3b973b2f4
-  m_Parameters:
-  - m_ParameterName: Threshold
-    m_GUID: b5b8e72cac5f0fb47aa6b5498c33a7df
-  - m_ParameterName: Attack
-    m_GUID: 4562e7178ecdf224ba288db821a2eff2
-  - m_ParameterName: Release
-    m_GUID: d2a09cf183159a44c967954aa3685378
-  - m_ParameterName: Make up gain
-    m_GUID: 90a8021289c3b11429bd55ee89cc65f8
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 0
 --- !u!244 &244596795684608322
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -160,23 +137,6 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
---- !u!244 &244788412637488120
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_EffectID: 2c549abaef7fda145b6dc05f7ea94e64
-  m_EffectName: Lowpass
-  m_MixLevel: 6eaa7639d70a91f49ab9f2ffc4b9adf0
-  m_Parameters:
-  - m_ParameterName: Cutoff freq
-    m_GUID: b457c7227296b7f47baf25cb3326825c
-  - m_ParameterName: Resonance
-    m_GUID: 1d7ab42a6bf690342b2ecd8c148aba5e
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 1
 --- !u!244 &244903845208361208
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
