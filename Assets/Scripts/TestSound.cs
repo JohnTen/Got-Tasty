@@ -5,6 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class TestSound : MonoBehaviour
 {
+    [SerializeField]
+    bool useSoundManger;
+
     [SerializeField, Range(0f, 1f)]
     float repeatTime;
 
@@ -14,6 +17,9 @@ public class TestSound : MonoBehaviour
     [SerializeField, Range(0.5f, 2f)]
     float pitch;
 
+    [SerializeField, Range(0, 2)]
+    float maturity;
+    
     AudioSource source;
 
     float timer;
@@ -30,9 +36,16 @@ public class TestSound : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer > 0) return;
 
-        source.volume = volume;
-        source.pitch = pitch;
-        source.Play();
+        if (useSoundManger)
+        {
+            SoundManager.PatWatermelon(maturity);
+        }
+        else
+        {
+            source.volume = volume;
+            source.pitch = pitch;
+            source.Play();
+        }
         timer = repeatTime;
     }
 }
