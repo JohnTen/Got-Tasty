@@ -195,8 +195,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1732816095}
   - component: {fileID: 1732816094}
+  - component: {fileID: 1732816096}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: Pat watermelon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -212,11 +213,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: d30cea7bdb03a1d42aa1393678c42add,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 34c7b07945b0249448fe656069d75a12, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 74219bfbee252fa4091de685a89b25bd, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -311,6 +312,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1732816096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1732816093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534c66cc878ee7a4b953d4359b0b8d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repeatTime: 1
+  volume: 1
+  pitch: 1
 --- !u!1 &1972605736
 GameObject:
   m_ObjectHideFlags: 0
