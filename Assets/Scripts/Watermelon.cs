@@ -21,25 +21,47 @@ public class Watermelon : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         set { wholeness = value; }
     }
 
-    public void Pat(float force)
-    {
-        wholeness -= force;
-        if (wholeness > 0) return;
-        BrokeDown();
-    }
+    [SerializeField]
+    Sprite brokenSprite;
 
-    public void BrokeDown()
+    public void BrokenDown()
     {
-        
+        SoundManager.SmashWatermelon();
+        GetComponent<SpriteRenderer>().sprite = brokenSprite;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        
+        if (wholeness <= 0) return;
+        if (GameManager.isManipulatingWatermelon)
+        {
+            if (GameManager.CurrentManipulatingWatermelon != this) return;
+            wholeness -= 0.15f;
+            if (wholeness <= 0)
+            {
+                BrokenDown();
+            }
+            else
+            {
+                SoundManager.PatWatermelon(maturity);
+            }
+        }
+        else
+        {
+            GameManager.PickUpWaterMelon(this);
+        }
+
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        
+        // nothing, yet.
+    }
+
+    private void Start()
+    {
+        maturity = Random.Range(0f, 2f);
+        wholeness = 1;
     }
 }
+
