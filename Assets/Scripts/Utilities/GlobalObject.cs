@@ -177,6 +177,12 @@ namespace UnityUtility
 
 		private void Awake()
 		{
+            if (Instance != null && Instance != this)
+            {
+                Destroy(this.gameObject);
+                return;
+            }
+
 			DontDestroyOnLoad(this.gameObject);
 		}
 	}
