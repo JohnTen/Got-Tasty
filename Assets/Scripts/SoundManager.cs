@@ -15,6 +15,9 @@ public class SoundManager : MonoBehaviour
     AudioSource angrySeller;
 
     [SerializeField]
+    AudioSource knife;
+
+    [SerializeField]
     AnimationCurve patPitch;
 
     static SoundManager _instance;
@@ -62,5 +65,10 @@ public class SoundManager : MonoBehaviour
     public static void AngrySeller()
     {
         Instance.angrySeller.Play();
+    }
+
+    public static void Knife()
+    {
+        Instance.knife.Play();
     }
 }

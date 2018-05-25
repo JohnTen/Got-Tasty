@@ -18,4 +18,10 @@ public class SingletonAgent : MonoBehaviour
     {
         GameManager.QuitManipulatingWatermelon();
     }
+
+    private void Start()
+    {
+        StartNewGame();
+    }
 }
+

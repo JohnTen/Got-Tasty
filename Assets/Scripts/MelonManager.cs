@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Events;
 
 public class MelonManager : MonoBehaviour
 {
@@ -39,6 +40,18 @@ public class MelonManager : MonoBehaviour
     RateMelon melonRator;
 
     [SerializeField]
+    Animator cutMelon;
+
+    [SerializeField]
+    UnityEvent CuttingMelon;
+
+    [SerializeField]
+    UnityEvent CuttedMelon;
+
+    [SerializeField]
+    UnityEvent BrokenMelon;
+
+    [SerializeField]
     Watermelon[] melonPrefabs;
     
     Watermelon[] melons;
@@ -46,6 +59,7 @@ public class MelonManager : MonoBehaviour
     Vector3 melonPosition;
     Vector3 melonScale;
     bool transfering;
+    bool cutting;
 
     int patTimes;
 
@@ -109,8 +123,18 @@ public class MelonManager : MonoBehaviour
     {
         if (!CurrentManipulatingWatermelon) return;
 
-        CurrentManipulatingWatermelon.gameObject.SetActive(false);
-        melonRator.RateWatermelon(CurrentManipulatingWatermelon);
+        if (CurrentManipulatingWatermelon.Wholeness > 0)
+        {
+            StartCoroutine(CutMelon());
+            return;
+        }
+
+        BrokenMelon?.Invoke();
+    }
+
+    public void AngrySeller()
+    {
+        SoundManager.AngrySeller();
     }
 
     public void PatMelon(Watermelon melon)
@@ -120,7 +144,7 @@ public class MelonManager : MonoBehaviour
         if (melon.Wholeness <= 0)
         {
             sellerSprite.ChangeToLastSprite();
-            SoundManager.AngrySeller();
+            Invoke("AngrySeller", 0.8f);
             RateMelon();
             return;
         }
@@ -151,6 +175,21 @@ public class MelonManager : MonoBehaviour
         StartCoroutine(PutBackMelon());
         CurrentManipulatingWatermelon = null;
         putDown.TransitionTo(0.5f);
+    }
+
+    IEnumerator CutMelon()
+    {
+        cutting = true;
+        CuttingMelon?.Invoke();
+        cutMelon.SetBool("Cut", true);
+        SoundManager.Knife();
+        yield return new WaitForSeconds(0.5f);
+        cutMelon.SetBool("Cut", false);
+        CuttedMelon?.Invoke();
+        cutting = false;
+        
+        CurrentManipulatingWatermelon.gameObject.SetActive(false);
+        melonRator.RateWatermelon(CurrentManipulatingWatermelon);
     }
 
     IEnumerator PickUpMelon()
