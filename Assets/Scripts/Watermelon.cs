@@ -41,10 +41,8 @@ public class Watermelon : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             {
                 BrokenDown();
             }
-            else
-            {
-                SoundManager.PatWatermelon(maturity);
-            }
+
+            GameManager.PatMelon(this);
         }
         else
         {
