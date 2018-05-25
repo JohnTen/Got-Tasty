@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityUtility;
 
@@ -8,6 +7,9 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField]
     AudioSource patWatermelon;
+
+    [SerializeField]
+    AudioSource smashWatermelon;
 
     [SerializeField]
     AnimationCurve patPitch;
@@ -40,5 +42,17 @@ public class SoundManager : MonoBehaviour
     {
         Instance.patWatermelon.pitch = Instance.patPitch.Evaluate(maturity);
         Instance.patWatermelon.Play();  
+    }
+
+    /// <summary>
+    /// Play sound of patting watermelon by maturity
+    /// </summary>
+    /// <remarks>
+    /// The range of maturity should be 0~2
+    /// </remarks>
+    /// <param name="maturity"></param>
+    public static void SmashWatermelon()
+    {
+        Instance.smashWatermelon.Play();
     }
 }
