@@ -28,15 +28,26 @@ public class RateMelon : MonoBehaviour
 
     public void RateWatermelon(Watermelon melon)
     {
-        foreach (var r in ratingLevels)
+        if (melon.Wholeness <= 0)
         {
-            if (melon.Maturity < r.maturaity)
-                continue;
+            var r = ratingLevels[ratingLevels.Length - 1];
 
             ratingText.text = r.rating;
             maturityText.text = melon.Maturity.ToString();
             cutOpenImage.sprite = r.image;
-            break;
+        }
+        else
+        {
+            foreach (var r in ratingLevels)
+            {
+                if (melon.Maturity < r.maturaity)
+                    continue;
+
+                ratingText.text = r.rating;
+                maturityText.text = melon.Maturity.ToString();
+                cutOpenImage.sprite = r.image;
+                break;
+            }
         }
 
         this.gameObject.SetActive(true);

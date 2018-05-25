@@ -34,7 +34,12 @@ public class GameManager : MonoSingleton<GameManager>
 
     public static void RateMelon()
     {
+        Instance.melonManager.RateMelon();
+    }
 
+    public static void PatMelon(Watermelon melon)
+    {
+        Instance.melonManager.PatMelon(melon);
     }
 
     public static void PickUpWaterMelon(Watermelon melon)

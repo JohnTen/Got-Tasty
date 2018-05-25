@@ -113,6 +113,24 @@ public class MelonManager : MonoBehaviour
         melonRator.RateWatermelon(CurrentManipulatingWatermelon);
     }
 
+    public void PatMelon(Watermelon melon)
+    {
+        SoundManager.PatWatermelon(melon.Maturity);
+
+        if (melon.Wholeness <= 0)
+        {
+            sellerSprite.ChangeToLastSprite();
+            SoundManager.AngrySeller();
+            RateMelon();
+            return;
+        }
+
+        patTimes++;
+        var sellerPicIndex = patTimes / 5;
+        sellerPicIndex = sellerPicIndex > 2 ? 2 : sellerPicIndex;
+        sellerSprite.ChangeSpriteTo(sellerPicIndex);
+    }
+
     public void PickUpWaterMelon(Watermelon melon)
     {
         if (transfering) return;
@@ -133,12 +151,6 @@ public class MelonManager : MonoBehaviour
         StartCoroutine(PutBackMelon());
         CurrentManipulatingWatermelon = null;
         putDown.TransitionTo(0.5f);
-    }
-
-    private void Update()
-    {
-        if (!isManipulatingWatermelon) return;
-        sellerSprite.ChangeSpriteTo(3 - Mathf.CeilToInt(CurrentManipulatingWatermelon.Wholeness * 3));
     }
 
     IEnumerator PickUpMelon()

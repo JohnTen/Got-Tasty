@@ -12,6 +12,9 @@ public class SoundManager : MonoBehaviour
     AudioSource smashWatermelon;
 
     [SerializeField]
+    AudioSource angrySeller;
+
+    [SerializeField]
     AnimationCurve patPitch;
 
     static SoundManager _instance;
@@ -54,5 +57,10 @@ public class SoundManager : MonoBehaviour
     public static void SmashWatermelon()
     {
         Instance.smashWatermelon.Play();
+    }
+
+    public static void AngrySeller()
+    {
+        Instance.angrySeller.Play();
     }
 }
