@@ -56,7 +56,7 @@ public class Watermelon : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         // nothing, yet.
     }
 
-    private void Start()
+    private void Awake()
     {
         maturity = Random.Range(0f, 2f);
         wholeness = 1;

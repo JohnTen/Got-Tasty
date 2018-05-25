@@ -14,7 +14,7 @@ public class TestSound : MonoBehaviour
     [SerializeField, Range(0f, 1f)]
     float volume;
     
-    [SerializeField, Range(0.5f, 2f)]
+    [SerializeField, Range(0f, 3f)]
     float pitch;
 
     [SerializeField, Range(0, 2)]

@@ -213,7 +213,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: d30cea7bdb03a1d42aa1393678c42add,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 7013095c19121b540b3bc7a62ab2a7d6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b0f558385e6b5b745a74db047d059f5a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -454,6 +454,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patWatermelon: {fileID: 1769575930}
+  smashWatermelon: {fileID: 0}
+  angrySeller: {fileID: 0}
+  knife: {fileID: 0}
   patPitch:
     serializedVersion: 2
     m_Curve:

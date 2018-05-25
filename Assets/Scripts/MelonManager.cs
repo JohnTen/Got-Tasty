@@ -93,6 +93,13 @@ public class MelonManager : MonoBehaviour
         for (int i = 0; i < melonCount; i++)
         {
             melons[i] = Instantiate(melonPrefabs[Random.Range(0, melonPrefabs.Length)].gameObject).GetComponent<Watermelon>();
+            if (i == 0 && (melons[i].Maturity > 1.2f || melons[i].Maturity < 0.8f))
+            {
+                Destroy(melons[i].gameObject);
+                i--;
+                continue;
+            }
+
             melons[i].transform.localScale = Vector3.one * Random.Range(melonScaleRange.x, melonScaleRange.y);
             melons[i].transform.rotation = Quaternion.Euler(0, 0, Random.value * 180 - 90);
 
